@@ -1,0 +1,99 @@
+<template name="Main">
+  {{> Enrollments}}
+</template>
+
+<template name="Enrollments">
+  <!-- {{#if Template.subcriptionsReady}} -->
+  <button type="submit" class="btn btn-primary" id="addEnrolee">Add Enrollee</button>
+  <table>
+    <thead>
+      <th>Full Name</th>
+      <th>Children 1</th>
+      <th>Children 2</th>
+      <th>Children 3</th>
+      <th>Children 4</th>
+    </thead>
+    <tbody>
+      {{> EnrolledData}}
+    </tbody>
+  </table>
+  <!-- {{/if}} -->
+</template>
+
+<template name="EnrolledData">
+  {{#each enrollmentsList}}
+  <tr>
+    <td>
+      {{fullName}}
+    </td>
+    <td>
+      {{children1}}
+    </td>
+    <td>
+      {{children2}}
+    </td>
+    <td>
+      {{children3}}
+    </td>
+    <td>
+      {{children4}}
+    </td>
+  </tr>
+  {{/each}}
+</template>
+
+<template name="Claims">
+  {{> addClaims}}
+</template>
+
+<template name="AddEnrollee">
+  {{#autoForm schema="Enrollments" id="insertEnrollee" type="insert"}}
+    <fieldset>
+      <legend>Add Enrollee</legend>
+      {{> afQuickField name='fullName'}}
+      {{> afQuickField name='children1'}}
+      {{> afQuickField name='children2'}}
+      {{> afQuickField name='children3'}}
+      {{> afQuickField name='children4'}}
+      {{> afQuickField name='age'}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Add</button>
+  {{/autoForm}}
+</template>
+
+<template name="EditEnrollee">
+  {{#autoForm collection="Enrollments" id="updateEnrollee" type="update"}}
+    <fieldset>
+      <legend>Add Enrollee</legend>
+      {{> afQuickField name='fullName'}}
+      {{> afQuickField name='children1'}}
+      {{> afQuickField name='children2'}}
+      {{> afQuickField name='children3'}}
+      {{> afQuickField name='children4'}}
+      {{> afQuickField name='age'}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Update Enrollee</button>
+  {{/autoForm}}
+</template>
+
+<template name="AddClaim">
+  {{#autoForm collection="Claims" id="insertClaims" type="insert"}}
+    <fieldset>
+      <legend>Create Claims</legend>
+      {{> afQuickField name='enrolmentId'}}
+      {{> afQuickField name='children'}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Create</button>
+  {{/autoForm}}
+</template>
+
+<template name="AditClaim">
+  {{#autoForm collection="Claims" id="editClaims" type="update"}}
+    <fieldset>
+      <legend>Create Claims</legend>
+      {{> afQuickField name='enrolmentId'}}
+      {{> afQuickField name='children'}}
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Edit</button>
+  {{/autoForm}}
+</template>
